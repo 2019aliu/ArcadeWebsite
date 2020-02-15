@@ -1,0 +1,25 @@
+.timer {
+    position: relative;
+    top: -200px;
+    left: -50px;
+    width: 5%;
+    padding: 0;
+    margin: auto;
+    display: inline-block;
+}
+
+.displayTime {
+    font-family: Georgia;
+    font-size: 54px;
+    font-weight: bold;
+}
+
+.timer ul {
+    position: relative;
+    left: 54px;
+    list-style: none;
+}
+
+.timer ul li {
+    margin: 20px;
+}

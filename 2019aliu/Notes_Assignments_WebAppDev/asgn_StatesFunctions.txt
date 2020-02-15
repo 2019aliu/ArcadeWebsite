@@ -1,0 +1,25 @@
+Lab1 - StatesBorders
+ * Web Application Development
+ *  Assignment 1 – States Borders
+ *  16 Points
+
+Assignment: Create a command line Javascript script with functions to check if states border each other with the following requirements
+ - Create an Adjacency Matrix Object / Array
+ - write the function getStateBorders(s1)
+ - write the function doStatesBorder(s1,s2) 
+
+Specifically:
+
+ - s1 and/or s2 can be full state names, uppercase or lowercase, or any combination
+ - s1 and/or s2 can be state abbreviations, uppercase only
+ - i.e. [New York, new York, MN, NEW JERSEY] are all valid input strings.
+ - this is a non-interactive script. run it by calling something like
+  >> node doStatesFcns.js
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+  <Points allocations>
+  
+  1) Create an 'adjacency matrix.' Can be a javascript object or array, keys should realistically only be either numbers or two letter strings.  [4 points]
+  2) Create a 'doStatesBorder' function. Returns a boolean  [4 points]
+  3) Create a 'getStateBorders' function. Returns an array  [4 points]

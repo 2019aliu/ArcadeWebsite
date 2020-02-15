@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Rules -- Minesweeper: US Edition</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+        <!-- Favicon -->
+        <!-- <link rel="shortcut icon" type="image/png" href="img/faviconHexagonCurve.png"/> -->
+        <link rel="shortcut icon" type="image/png" href="img/faviconChevron.png"/>
+    
+        <!-- External CSS -->
+        <link rel="stylesheet" type="text/css" href="css/nav_bar.css">
+        <link rel="stylesheet" type="text/css" href="css/rulesPage.css">
+    </head>
+    
+    <body>
+        <nav class="topnav">
+        	<a class="active" href="/2019aliu/">Home</a>
+        	<a href="/2019aliu/statesGame">Mines</a>
+        	<a href="/2019aliu/statesRules">Rules</a>
+        	<a href="/2019aliu/statesFeedback">Feedback</a>
+        	<a class="login" href="/2019aliu/loginPage">Login</a>
+        </nav>
+        
+        <div class="title-line">
+        	<h1 style="text-align: center" id="logo-text">Instructions</h1>
+        </div>
+        
+        <h2>How to play Minesweeper: US Edition</h2>
+        <p>
+            This game is like any other game of minesweeper, except this game uses the continental United States instead of a square grid. <br><br>
+            <b>Objective</b>: To detect the hidden mines in the map. <br><br>
+            <b>How to play</b>: Click on each of the states. The clicked state should return a color, which corresponds to a certain number of mines.<br><br>
+            <b>How to win</b>: When all mines are either avoided or marked. There should be 8 mines<i>(flags are currently in development)</i> <br><br>
+            <b>Game ending</b>: When any mine is "detonated" (i.e. if a mine hidden under a state is pressed), the game is over.<br>
+        </p>
+        
+        <h2>Color Code</h2>
+        <p>Each color indicates a certain number of mines. The more red and intense the color is, the more mines surround the state.</p>
+        <div class="colorCodes">
+            <div class="mineColor mine0"><p style="font-size: 34px; text-align: center; vertical-align: middle;">0</p></div>
+            <div class="mineColor mine1"><p style="font-size: 34px; text-align: center; vertical-align: middle;">1</p></div>
+            <div class="mineColor mine2"><p style="font-size: 34px; text-align: center; vertical-align: middle;">2</p></div>
+            <div class="mineColor mine3"><p style="font-size: 34px; text-align: center; vertical-align: middle;">3</p></div>
+            <div class="mineColor mine4"><p style="font-size: 34px; text-align: center; vertical-align: middle;">4</p></div>
+            <div class="mineColor mine5"><p style="font-size: 34px; text-align: center; vertical-align: middle;">5</p></div>
+            <div class="mineColor mine6"><p style="font-size: 34px; text-align: center; vertical-align: middle;">6</p></div>
+            <div class="mineColor mine7"><p style="font-size: 34px; text-align: center; vertical-align: middle;">7</p></div>
+            <div class="mineColor mine8"><p style="font-size: 34px; text-align: center; vertical-align: middle;">8</p></div>
+        </div>
+        
+        <h2 style="clear: left;">The mines</h2>
+        <p>There is, however, one color that is an exception. That is the mine itself. The color is <strong>black</strong>; you won't miss it.</p>
+        
+        <h2 style="clear: left;">Placing flags</h2>
+        <p>Flags are added for convenience. The flags are indicated by the color below:</p>
+        <div class="mineColor flag"><p style="font-size: 34px; text-align: center; vertical-align: middle;">Flag</p></div>
+        <p style="clear: left;">Right click on a state once to place a flag there, and right click again to clear the flag</p>
+        
+        <h2>Timer</h2>
+        <p>The timer may be started in the following ways:</p>
+        <ul>
+            <li>Clicking any state excluding Hawaii</li>
+            <li>Clicking the "Start" button</li>
+        </ul>
+        <p>The timer may be stopped in the following ways:</p>
+        <ul>
+            <li>Finishing the minesweeper</li>
+            <li>Clicking the "Stop" button</li>
+        </ul>
+        <p>Of course, the proper stopping of the game will depend on your integrity.</p>
+        <p>The timer may be reset by pressing the "Reset" button.<br><br>It may also be reset by pressing Hawaii, but that will refresh the page.</p>
+        
+        <h2>Notes about Alaska, Hawaii, and DC</h2>
+        <p>
+            First of all, these states or regions are not involved in the actual game. That means these will not be mines.<br><br>
+            <u>Alaska</u>: Starts the timer.<br><br>
+            <u>Hawaii</u>: Refreshes the page.<br><br>
+            <u>DC</u>: <s>Automatically win the game</s> Does not do anything... (too small for gameplay)
+        </p>
+        
+        <h3>Have fun! ~Alex Liu (2019aliu)</h3>
+        <h2>Go back to the game: <a href="/2019aliu/statesGame">Minesweeper US Edition</a></h2>
+    </body>
+</html>

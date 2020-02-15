@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Profile: {{tjUser}}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+        <!-- Favicon -->
+        <!-- <link rel="shortcut icon" type="image/png" href="img/faviconHexagonCurve.png"/> -->
+        <link rel="shortcut icon" type="image/png" href="img/faviconChevron.png"/>
+    
+        <!-- External CSS -->
+        <link rel="stylesheet" type="text/css" href="css/nav_bar.css">
+        <link rel="stylesheet" type="text/css" href="css/accounts.css">
+        
+        <style>
+            .center {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 10%;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <nav class="topnav">
+        	<a class="active" href="/2019aliu/">Home</a>
+        	<a href="/2019aliu/statesGame" target="_blank">Mines</a>
+        	<a href="/2019aliu/scrabbleSolver" target="_blank">Scrabble Solver</a>
+        	<a href="/2019aliu/cookieClicker" target="_blank">Cookie Clicker</a>
+        	<a href="https://tjtetris.sites.tjhsst.edu/" target="_blank">Tetris</a>
+        	<a href="/2019aliu/about" target="_blank">About</a>
+        	<a class="login" href="/2019aliu/loginPage">{{tjUser}}</a>
+        </nav>
+        
+        <div class="title-line">
+        	<h1 style="text-align: center;" id="logo-text">Profile: {{tjUser}}</h1>
+        </div>
+        
+        {{!-- I wil hopefully format this profile picture at some point--}}
+        <div>
+            <img class="center" src={{profilePic}} alt="{{tjUser}}'s profile picture">
+        </div>
+        
+        <div class="loginDiv">
+            <a class="loginLink" href="/2019aliu/logout">Logout</a>
+        </div>
+        
+        <p>(Much) More info to be added soon...</p>
+        <div>
+            <ul>
+                <li><strong>Name</strong>: {{shortName}}</li>
+                {{!--<li><strong>Grade</strong>: {{gradeNumber}} ({{gradeName}})</li>--}}
+                {{!--<li><strong>Counselor</strong>: {{counselorName}}</li>--}}
+            </ul>
+        </div>
+    </body>
+</html>

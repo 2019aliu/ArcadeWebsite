@@ -1,0 +1,19 @@
+DROP TABLE IF EXISTS gamedata;
+CREATE TABLE gamedata(id INT, clicks INT, profit INT, PRIMARY KEY(id));
+INSERT INTO gamedata(id) VALUE (1);
+
+#----------------------------------------------
+
+# drop existing procedure
+DROP PROCEDURE IF EXISTS reinitialize_user;
+
+DELIMITER $$
+
+CREATE PROCEDURE reinitialize_user(ID usr INT)
+
+BEGIN
+INSERT INTO gamedata(id, clicks, profit) VALUES (usr, 0, 0)
+ON DUPLICATE KEY UPDATE id = VALUES(id), clicks=0, profit=0c;
+END$$
+
+DELIMITER ;

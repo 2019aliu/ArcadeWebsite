@@ -1,0 +1,22 @@
+/**
+ * Web Application Development
+ *  Assignment 3 – Server and Client together
+ *  15 Points
+ */
+
+
+Your assignment is to make two (2) pages are the corresponding server logic to handle these pages and files.  These pages must be accessible from your root landing page.  The first page (which can be user.tjhsst.edu/2019tjeffers ) will serve as a course submission page.  The second will be a " My Fun Page" or "My Summer" or "First Semester of Senior Year" or "Second Semester of Junior Year" (etc.) page.
+
+- Part 1 - first page elements
+
+1) Make a course index page
+2) Make this page accessible/findable via a link from your root level user page ('/2020tjeffs') so that I can actually find it. I need to be able to find it.
+3) This page must contain doctype, html, head and body tags
+
+- Part 2 - my fun page
+
+1) page must contain doctype, head, title and body tags
+2) page must contain divs, links a list and an image.
+3) page must contain css formatting in a separate css file
+4) page must contain client side js sourced from a separate js file
+5) server must contain logic to serve the required css, js, web pages and images

@@ -1,0 +1,60 @@
+.topnav {
+    /*background-color: rgba(11, 121, 165, 0.25);*/
+    background-image: linear-gradient(to right, rgba(11, 121, 165, 1), rgba(11, 121, 165, 0.15));
+    overflow: hidden;
+}
+
+/*color is the font color, background-color is the background color...*/
+.topnav a {
+    float: left;
+    color: #f0f0f0;
+    background-color: #0b79a5;
+    font-size: 24px;
+    text-align: center;
+    padding: 10px 16px;
+    text-decoration: none;
+    -webkit-transition-duration: 0.1s; /* Safari */
+    transition-duration: 0.1s;
+    /*border: 0.5px hidden #030303;*/
+}
+
+.topnav a:hover {
+    background-color: rgba(11, 121, 165, 0.375);
+    color: black;
+}
+
+.topnav a.active {
+    background-color: #a59f1f;
+}
+
+.topnav a.active:hover {
+    background-color: #f0f0f0;
+    color: black;
+}
+
+.topnav .login {
+    background-color: rgba(11, 121, 165, 0.8);
+    color: #e5cf5f;
+    float: right;
+}
+
+.topnav .login:hover {
+    background-color: rgba(11, 121, 165, 0.2);
+    
+}
+
+/*
+
+ul {
+    list-style-type: square;
+    margin: -8px;
+    padding: 0;
+    width: 100px; 
+}
+
+li a {
+    display: block;
+    color: #000;
+    padding: 10px 10px;
+    text-decoration: none;
+}*/

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Scrabble Solver</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+        <!-- Favicon -->
+        <!-- <link rel="shortcut icon" type="image/png" href="img/faviconHexagonCurve.png"/> -->
+        <link rel="shortcut icon" type="image/png" href="img/faviconChevron.png"/>
+    
+        <!-- External CSS -->
+        <link rel="stylesheet" type="text/css" href="css/nav_bar.css">
+        <link rel="stylesheet" type="text/css" href="css/scrabbleSolver.css">
+    </head>
+    
+    <body>
+        <nav class="topnav" style="margin: 7.5px;">
+        	<a class="active" href="/2019aliu/">Home</a>
+        	<a href="/2019aliu/statesGame" target="_blank">Mines</a>
+        	<a href="/2019aliu/scrabbleSolver">Scrabble Solver</a>
+        	<a href="/2019aliu/cookieClicker" target="_blank">Cookie Clicker</a>
+        	<a href="https://tjtetris.sites.tjhsst.edu/" target="_blank">Tetris</a>
+        	<a href="/2019aliu/about" target="_blank">About</a>
+        	<a class="login" href="/2019aliu/loginPage">{{tjUser}}</a>
+        </nav>
+        
+        <div class="title-line">
+        	<h1 style="text-align: center" id="logo-text">Scrabble Solver</h1>
+        </div>
+        
+        <div class="scrabbleFormDiv">
+            <form id="scrabbleForm" name="scrabbleForm" onsubmit="event.preventDefault();" >
+                <br>
+                <div class="formItem">
+                    <label for="letters">Enter the letters (enter wildcard tiles as a ?, maximum two wildcards):</label>
+                    <input type="text" id="letters" name="letters" placeholder="Ch?ar?s"/>
+                </div>
+                <br>
+                
+                <div class="formItem">
+                    <label for="moreOptions">Do you want to filter your search?</label>
+                    <div class="moreOptions">
+                        <div>
+                            <input type="radio" id="yesOption" name="ynOption" class="optionBox" onclick="javascript:moreOptionCheck()" value="yes">
+                            <label for="ynOption">Yes</label>
+                        </div>
+                        
+                        <div>
+                            <input type="radio" id="noOption" name="ynOption" class="optionBox" onclick="javascript:moreOptionCheck()" value="no" checked>
+                            <label for="ynOption">No</label>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                
+                {{!-- More options --}}
+                <div class="hiddenItem" id="optionsDiv" style="visibility:hidden">
+                    <label id="optionsLabel" for="options" style="visibility:hidden">Select options</label>
+                    <select id="options" class="options" onclick="javascript:lettersContainedCheck()">
+                        <option value="Select an option">Select an option</option>
+                        <option value="Letters">Letters</option>
+                        <option value="Letters with Positions">Letters with Positions</option>
+                        {{!--<option value="Custom Board">Custom Board</option>--}}
+                    </select>
+                </div>
+                <br>
+                
+                {{!--<div class="hiddenItem" style="visibility:hidden;" id="lettersContainedDiv">--}}
+                <div class="hiddenItem" id="lettersContainedDiv">
+                    <label id="lettersContainedLabel" for="lettersContained" style="visibility:hidden">Enter letters contained</label>
+                    <input type="hidden" id="lettersContained" name="lettersContained">
+                </div>
+                <br>
+                
+                {{!--<div class="hiddenItem" style="visibility:hidden;" id="lettersIndexesContainedDiv">--}}
+                <div class="hiddenItem" id="lettersIndexesContainedDiv">
+                    <label id="lettersIndexesContainedLabel" for="lettersIndexesContained" style="visibility:hidden">Enter letters contained, format: INDEX1 LETTER1, INDEX2 LETTER2, ...</label>
+                    <input type="hidden" id="lettersIndexesContained" name="lettersIndexesContained" placeholder="0 a, 3 c">
+                </div>
+                <br>
+                
+                <button onclick="validateForm()">Submit!</button>
+                
+                {{!-- border="1" --}}
+                {{!--<table id="words"> --}}
+                {{!--</table>--}}
+            </form>
+        </div>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script type="text/javascript">
+            
+            // check for whether user wants more options
+            function moreOptionCheck(){
+                if (document.getElementById('yesOption').checked === true) {
+                    document.getElementById('optionsDiv').style.visibility = 'visible';
+                    document.getElementById('optionsLabel').style.visibility = 'visible';
+                    // document.getElementById('options').type = "";
+                }
+                else if (document.getElementById('noOption').checked === true) {
+                    document.getElementById('optionsDiv').style.visibility = 'hidden';
+                    document.getElementById('optionsLabel').style.visibility = 'hidden';
+                    // document.getElementById('options').type = "hidden";
+                    document.getElementById('lettersContained').type = 'hidden';
+                    document.getElementById('lettersContainedLabel').style.visibility = 'hidden';
+                    document.getElementById('lettersIndexesContained').type = 'hidden';
+                    document.getElementById('lettersIndexesContainedLabel').style.visibility = 'hidden';
+                }
+            }
+            
+            // display DOM elements for letters vs letters+indexes (+ other stuff?)
+            function lettersContainedCheck() {
+                
+                // Letters only
+                
+                if (document.getElementById('options').value === "Letters") {
+                    // document.getElementById('lettersContainedDiv').style.visibility = 'visible';
+                    document.getElementById('lettersContained').type = 'text';
+                    document.getElementById('lettersContainedLabel').style.visibility = 'visible';
+                }
+                else {
+                    // document.getElementById('lettersContainedDiv').style.visibility = 'hidden';
+                    document.getElementById('lettersContained').type = 'hidden';
+                    document.getElementById('lettersContainedLabel').style.visibility = 'hidden';
+                }
+                
+                // Letters with indexes
+                
+                if (document.getElementById('options').value === "Letters with Positions") {
+                    // document.getElementById('lettersIndexesContainedDiv').style.visibility = 'visible';
+                    document.getElementById('lettersIndexesContained').type = 'text';
+                    document.getElementById('lettersIndexesContainedLabel').style.visibility = 'visible';
+                }
+                else {
+                    // document.getElementById('lettersIndexesContainedDiv').style.visibility = 'hidden';
+                    document.getElementById('lettersIndexesContained').type = 'hidden';
+                    document.getElementById('lettersIndexesContainedLabel').style.visibility = 'hidden';
+                }
+            }
+            
+            // Form validation -- make sure there are no incorrectly filled out fields
+    	    function validateForm() {
+                
+                // Counting number of wildcards
+                
+                var userLetters = document.getElementById("letters").value;
+                var letterList = userLetters.split("");
+                if (letterList.length < 1) {
+                    alert("Please enter letters.");
+                    return null;
+                }
+                let blankCount = 0;
+                for (var index = 0; index < letterList.length; index++) {
+                    if (!/^[a-zA-Z?]+$/.test(letterList[index])) {
+                        alert("The character " + letterList[index] + " is not an accepted character. Please enter an alphabetic letter or a ? for a wildcard. Thanks!");
+                        return null;
+                    }
+                    else if (letterList[index] === "?") {
+                        blankCount++;
+                    }
+                }
+                if (blankCount > 2) {
+                    alert("Please use a maximum of two wildcards. Thanks!");
+                    return null;
+                }
+                
+                
+                // Checking if option has been selected if more options are requested
+                
+                // var userNoOption = document.getElementById("noOption").checked;
+                var userYesOption = document.getElementById("yesOption").checked;
+                var userOptions = document.getElementById("options").value;
+                if (userYesOption && userOptions === "Select an option") {
+                    alert("Please select a filtering option, or check 'No' on the checkbox. Thanks!");
+                    return null;
+                }
+                
+                // Checking if options parameters are valid
+                
+                
+                
+                // Letters + Indexes
+                var userFiltersLI = document.getElementById('lettersIndexesContained').value;
+                if (userYesOption && userOptions === "Select an option" && userFiltersLI.length < 1) {
+                    alert("Please enter index-letter pairs, or check 'No' on the checkbox. Thanks!");
+                    return null;
+                }
+                var filtersLIRAW = userFiltersLI.split(", ");
+                for (var i = 0; i < filtersLIRAW.length; i++) {
+                    var tempFilterLI = filtersLIRAW[i].split(" ");
+                    // this works only because js is weird. tempFilter[0] IS ACTUALLY A STRING WTFWTFWTF
+                    // DO NOT MISUSE THIS
+                    if (tempFilterLI[0] > userLetters.length - 1) {  
+                        var lastIndex = userLetters.length-1;
+                        alert("The index of " + tempFilterLI[0] + " is not valid. Please enter an index in between 0 and " + lastIndex + ". Thanks!");
+                        return null;
+                    }
+                }
+                
+                // we are here because form is complete
+                doAjax();
+            }
+            
+    		function doAjax() {
+    			$.ajax({
+    				url: "https://user.tjhsst.edu/2019aliu/scrabbleSolver_received",
+    				data: $('#scrabbleForm').serialize(),
+    				success: function(data){
+    					// make display elements in DOM
+    					
+    					// Filtered words with letters with positions
+    					if (document.getElementById("yesOption").checked && document.getElementById('options').value === "Letters with Positions") {
+        					// Filtered words
+        					var filteredWordsLI = document.getElementById("filteredWordsLI");
+        					if (!filteredWordsLI) {
+        					    // Creating the container div
+        					    var filteredWordsLI = document.createElement("div");
+        					    filteredWordsLI.setAttribute("class", "wordContainerDiv");
+        				    	filteredWordsLI.setAttribute("id", "filteredWordsLI");
+        				    	// if the "all words" field is not already there, then it's ok to just tack onto the end
+        				    	if (!document.getElementById("allWords")) {
+        				    	    document.body.appendChild(filteredWordsLI);
+        				    	}
+        				    	// otherwise, we need to put this before the "all words"
+        				    	else {
+        				    	    document.body.insertBefore(filteredWordsLI, document.getElementById("allWords"));
+        				    	}
+        					    for (var i = 0; i < data.filteredWords.length; i++) {
+        					        let tempWord = document.createElement("div");
+        					        tempWord.innerHTML = "<a href='https://www.dictionary.com/browse/" + data.filteredWords[i] + "' target='_blank'>" + data.filteredWords[i] + "</a>";
+        					        tempWord.setAttribute("class", "wordDiv");
+        					        filteredWordsLI.appendChild(tempWord);
+        					    }
+        					}
+        					else {
+        					   filteredWordsLI.innerHTML = "";
+        					   for (var i = 0; i < data.filteredWords.length; i++) {
+        					        let tempWord = document.createElement("div");
+        					        tempWord.innerHTML = "<a href='https://www.dictionary.com/browse/" + data.filteredWords[i] + "' target='_blank'>" + data.filteredWords[i] + "</a>";
+        					        tempWord.setAttribute("class", "wordDiv");
+        					        filteredWordsLI.appendChild(tempWord);
+        					    }
+        					}
+    					}
+    					else if (document.getElementById("noOption").checked && document.getElementById("filteredWordsLI") != null) {
+    					    document.body.removeChild(document.getElementById("filteredWordsLI"));
+    					}
+
+
+    					// All words in alphabetic order
+    					var allWords = document.getElementById("allWords");
+    					if (!allWords) {
+    					    var allWords = document.createElement("div");
+    					    allWords.setAttribute("class", "wordContainerDiv");
+    					    allWords.setAttribute("id", "allWords");
+    					    document.body.appendChild(allWords);
+    					    for (var i = 0; i < data.words.length; i++) {
+    					        let tempWord = document.createElement("div");
+    					        tempWord.innerHTML = "<a href='https://www.dictionary.com/browse/" + data.words[i] + "' target='_blank'>" + data.words[i] + "</a>"
+    					        tempWord.setAttribute("class", "wordDiv");
+    					        allWords.appendChild(tempWord);
+    					    }
+    					}
+    					else {
+    					    allWords.innerHTML = "";  // get rid of everything inside, and start again
+    					    for (var i = 0; i < data.words.length; i++) {
+    					        let tempWord = document.createElement("div");
+    					        tempWord.innerHTML = "<a href='https://www.dictionary.com/browse/" + data.words[i] + "' target='_blank'>" + data.words[i] + "</a>"
+    					        tempWord.setAttribute("class", "wordDiv");
+    					        allWords.appendChild(tempWord);
+    					    }
+    					}
+    					
+    					// print out data for reference (don't delete this -- useful for debugging!)
+    					console.log(data);
+    				},
+    				error: function(data){
+    				    console.log("error in your code");
+    				}
+    			});
+    		}
+        
+        // 	Code scraps
+        
+				// 	else if (!document.getElementById("yesOption").checked) {
+		// 	    var remfilteredWordsLI = document.getElementById("filteredWordsLI");
+		// 	    console.log(remfilteredWordsLI);
+		// 	    document.body.removeChild(remfilteredWordsLI);
+		// 	   // if (!remfilteredWordsLI) {
+		// 	   //    // document.body.removeChild(filteredWordsLI);
+		// 	   //     console.log("okcool no LI here");
+		// 	   // }
+		// 	   // else {
+		// 	   //     document.body.removeChild(remfilteredWordsLI);
+		// 	   // }
+		// 	   // if (filteredWordsLI) {
+		// 	   //     document.body.removeChild(filteredWordsLI);
+		// 	   // }
+		// 	}
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,23 @@
+How to use handlebars:
+
+Put html file into views folder
+Rename to .hbs
+Change the res.send to res.render
+input other variables from server
+
+
+
+e.g. 
+
+in something.hbs
+
+<p>{{count}}<p>
+
+in server.js
+
+var serverCounter = 0;
+
+....
+
+
+res.render("something", {count: serverCounter})

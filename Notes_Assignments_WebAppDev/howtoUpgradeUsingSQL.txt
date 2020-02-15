@@ -1,0 +1,5 @@
+ UPDATE cookieClickers, (SELECT amount FROM upgradeClick WHERE upgrade="upgradeA") as upgradeAMulti SET cookiesCount = cookiesCount + upgradeAMulti.amount WHERE user="2019aliu"
+ 
+ updated version:
+ 
+ UPDATE cookieClickers, (SELECT amount FROM upgradeClick WHERE upgrade="upgradeA") as upgradeAMulti SET cookiesCount = cookiesCount + upgradeA * upgradeAMulti.amount WHERE user="2019aliu"

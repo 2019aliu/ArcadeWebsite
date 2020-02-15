@@ -1,0 +1,16 @@
+Good resource: mozilla developer network
+https://developer.mozilla.org/en-US/
+https://developer.mozilla.org/en-US/docs/Web/JavaScript
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference
+
+Objects: key-value pairs (like a dictionary), BUT can:
+    functions can be values (like a class)
+
+Watch the names of the variables
+
+MUST USE FOREACH OR MAP IN FIRST ASSIGNMENT
+(can't do that directly with objects, but ok with arrays)
+
+map is the fastest way to return a modified array
+reduce is better for manipulating data amounts, data structure/data types, etc.
+
