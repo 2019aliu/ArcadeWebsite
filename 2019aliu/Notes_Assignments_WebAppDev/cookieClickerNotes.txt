@@ -1,6 +1,0 @@
-when user logs in, profile should be attached to cookie
-
-
-SQL TABLE:
-
-ID NumCookies Profit UpgradeTier
